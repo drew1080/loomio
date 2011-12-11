@@ -2,11 +2,11 @@ Tautoko::Application.routes.draw do
   devise_for :users
 
   resources :groups do
-    resources :motions, name_prefix: "groups_"
+    resources :motions, name_prefix: "groups_", :except => :index
     get :request_membership, on: :member
   end
   resources :motions do
-    resources :votes
+    resources :votes, :except => :index
   end
 
   resources :votes
